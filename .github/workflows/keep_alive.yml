@@ -1,0 +1,14 @@
+name: Keep Streamlit Alive
+
+on:
+  schedule:
+    - cron: '0 */5 * * *'
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Ping Request
+        run: |
+          curl -sL --cookie-jar cookies.txt -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64)" "https://krmedicshrdashboard.streamlit.app/" > /dev/null
